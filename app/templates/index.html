@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">Latest News</h2>
+
+<div class="row">
+  {% for n in news_list %}
+  <div class="col-md-6 mb-3">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ n['title'] }}</h5>
+        <p class="card-text">{{ n['summary'][:200] }}...</p>
+        <a href="{{ n['link'] }}" target="_blank" class="btn btn-primary btn-sm">Read Full</a>
+      </div>
+      <div class="card-footer text-muted">
+        Published: {{ n['published'] }}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

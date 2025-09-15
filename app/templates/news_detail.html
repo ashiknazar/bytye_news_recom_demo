@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ news['title'] }}</h2>
+<p><small>Source: {{ news['source'] }} | Published: {{ news['published'] }}</small></p>
+<p>{{ news['summary'] }}</p>
+<a href="{{ news['link'] }}" target="_blank" class="btn btn-primary">Read Full Article</a>
+
+<hr>
+<h3>Similar News</h3>
+<div class="row">
+  {% for n in similar_news %}
+  <div class="col-md-6 mb-3">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ n['title'] }}</h5>
+        <p class="card-text">{{ n['summary'][:150] }}...</p>
+        <a href="{{ n['link'] }}" target="_blank" class="btn btn-outline-primary btn-sm">Read</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

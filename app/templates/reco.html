@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">Recommended for You</h2>
+
+{% if message %}
+  <p>{{ message }}</p>
+{% else %}
+<div class="row">
+  {% for n in reco_list %}
+  <div class="col-md-6 mb-3">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ n['title'] }}</h5>
+        <p class="card-text">{{ n['summary'][:180] }}...</p>
+        <a href="{{ n['link'] }}" target="_blank" class="btn btn-success btn-sm">Read</a>
+      </div>
+      <div class="card-footer text-muted">
+        Published: {{ n['published'] }}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}
